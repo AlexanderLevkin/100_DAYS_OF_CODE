@@ -19,4 +19,4 @@ for latter in chosen_word:
     else:
         print("Wrong")
 
-jhkjh
+latter
