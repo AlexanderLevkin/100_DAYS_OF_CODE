@@ -19,3 +19,8 @@ for latter in chosen_word:
     else:
         print("Wrong")
 
+for latter in chosen_word:
+    if guess == latter:
+        print("Right")
+    else:
+        print("Wrong")
