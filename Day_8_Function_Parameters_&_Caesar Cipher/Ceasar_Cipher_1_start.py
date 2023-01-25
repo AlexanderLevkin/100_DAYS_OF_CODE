@@ -32,4 +32,3 @@ encrypt(text, shift)
     ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
 
 #TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message.
-
