@@ -22,9 +22,15 @@ from art import logo
 # The computer is the dealer.
 
 
-
 user_stack = []
 computer_stack = []
+
+
+def ace():
+    if 11 in user_stack and sum(user_stack) > 21:
+        user_stack.remove(11)
+        user_stack.append(1)
+    return user_stack
 
 
 def stack_of_cards():
@@ -33,52 +39,33 @@ def stack_of_cards():
     return card
 
 
-def start_game():
+def start_game(cards):
     start = input("Do you want to play a game of Blackjack? Type 'y' or 'n' :")
     if start == "y":
         print(logo)
-        user_stack.append(stack_of_cards())
-        user_stack.append(stack_of_cards())
-        print(user_stack)
+        for _ in range(1, 3):
+            user_stack.append(cards())
+        print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+        for _ in range(1, 3):
+            computer_stack.append(cards())
+        print(f"Computer's first card: {computer_stack[0]}")
     else:
         exit()
     return start
 
-start_game()
-# if start_game() == "y":
-#     user_score.append(stack_of_cards())
-#     print(f"Your cards: {}, current score: {sum(computer_score)}")
-#     print(f"Computer's first card: {computer_score}")
-#
-#     switcher = True
-#     while switcher:
-#         if input("Type 'y' to get another card, type 'n' to pass:") == "y":
-#             next_round = main_round_user.append(random.choice(cards))
-#             current_user_score = sum(main_round_user)
-#             print(f"Your cards: {main_round_user}, current score: {current_user_score}")
-#             print(f"Computer's card: {computer_score + computer_score}")
-#             if current_user_score > 21:
-#                 for i in range(current_user_score):
-#                     if i == 11:
-#                         i = 1
-#                         sum(main_round_user)
-#                 print(f"Your final hand: {main_round_user}, final score: {sum(main_round_user)}")
-#
-#
-#         else:
-#             print(f"Your final hand: {main_round_user}, final score: {sum(main_round_user)}")
-#             print(computer_score)
-#             final_computer_score = computer_score.append(random.choice(cards))
-#             print(final_computer_score)
-#             print(f"Computer's final hand: {final_computer_score}, final score: {sum(computer_score)}")
-#
-#             if sum(main_round_user) < sum(computer_score):
-#                 print("You lose 😤")
-#             elif sum(main_round_user) == sum(computer_score):
-#                 print("Draw")
-#             else:
-#                 print("You win")
-#
-#             switcher = False
-# else:
-#     exit()
+
+start_game(stack_of_cards)
+
+switcher = True
+while switcher:
+    continue_message = input("Type 'y' to get another card, type 'n' to pass:")
+    ace()
+    if continue_message == "y" and sum(user_stack) < 21:
+        user_stack.append(stack_of_cards())
+        print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+        computer_stack.append(stack_of_cards())
+        print(f"Computer's card: {computer_stack[0]}")
+    elif continue_message == "y" and sum(user_stack) > 21:
+        print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+        print(f"Computer's card: {computer_stack}")
+
