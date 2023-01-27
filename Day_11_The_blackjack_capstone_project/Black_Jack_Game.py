@@ -1,27 +1,5 @@
 import random
-
 from art import logo
-
-############### Blackjack Project #####################
-
-# Difficulty Normal 😎: Use all Hints below to complete the project.
-# Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
-# Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
-# Difficulty Expert 🤯: Only use Hint 1 to complete the project.
-
-############### Our Blackjack House Rules #####################
-
-# The deck is unlimited in size.
-# There are no jokers.
-# The Jack/Queen/King all count as 10.
-# The Ace can count as 11 or 1.
-# Use the following list as the deck of cards:
-# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-# The cards in the list have equal probability of being drawn.
-# Cards are not removed from the deck as they are drawn.
-# The computer is the dealer.
-
-
 user_stack = []
 computer_stack = []
 
@@ -59,13 +37,41 @@ start_game(stack_of_cards)
 switcher = True
 while switcher:
     continue_message = input("Type 'y' to get another card, type 'n' to pass:")
-    ace()
     if continue_message == "y" and sum(user_stack) < 21:
         user_stack.append(stack_of_cards())
-        print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
-        computer_stack.append(stack_of_cards())
-        print(f"Computer's card: {computer_stack[0]}")
-    elif continue_message == "y" and sum(user_stack) > 21:
-        print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
-        print(f"Computer's card: {computer_stack}")
+        if sum(user_stack) < 21:
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's card: {computer_stack[0]}")
+        elif 21 > sum(user_stack) > sum(computer_stack):
+            ace()
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+        elif 21 >= sum(user_stack) > sum(computer_stack):
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print("You win")
+        elif 21 >= sum(user_stack) == sum(computer_stack):
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print("Draw")
+        else:
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print(f"You loose")
+            switcher = False
+    else:
+        if 21 >= sum(user_stack) > sum(computer_stack):
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print(f"You win")
+        elif 21 >= sum(user_stack) == sum(computer_stack):
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print("Draw")
+        else:
+            print(f"Your cards: {user_stack}, current score: {sum(user_stack)}")
+            print(f"Computer's score: {sum(computer_stack)}")
+            print(f"You loose")
+        switcher = False
+
 
