@@ -73,5 +73,5 @@ while switcher:
             print(f"Computer's score: {sum(computer_stack)}")
             print(f"You loose")
         switcher = False
-
+        switcher
 
