@@ -24,3 +24,5 @@ class QuizBrain():
         print(f"the correct answer is {correct_answer}")
         print(f"Your current score is {self.score}/{self.question_number}")
         print("\n")
+
+
