@@ -1,11 +1,10 @@
 import random
-from turtle import Turtle, Screen
+import turtle as t
 
-timmy_the_turtle = Turtle()
+timmy_the_turtle = t.Turtle()
+color = t.colormode(255)
 timmy_the_turtle.shape("turtle")
 timmy_the_turtle.color("blue")
-timmy_the_turtle.pensize(10)
-timmy_the_turtle.speed(50)
 
 # for _ in range(4):
 #     timmy_the_turtle.forward(100)
@@ -47,10 +46,19 @@ def moves(count):
     return random.choice(list_of_move)
 
 
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    tupp = (r, g, b)
+    return tupp
+
+
 for step in range(1, 1000):
-    timmy_the_turtle.color(random.choice(colours))
+    timmy_the_turtle.pensize(15)
+    timmy_the_turtle.speed(4)
+    timmy_the_turtle.color(random_color())
     moves(random.randint(1, 100))
 
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
-
