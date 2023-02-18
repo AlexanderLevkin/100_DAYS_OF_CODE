@@ -1,5 +1,6 @@
 import random
 from turtle import Turtle, Screen
+import tkinter as TK
 
 screen = Screen()
 screen.setup(width=700, height=600)
