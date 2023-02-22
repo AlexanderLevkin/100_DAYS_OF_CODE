@@ -9,8 +9,9 @@ MOVE_INCREMENT = 10
 class CarManager:
     def __init__(self):
         self.all_cars = []
+        self.car_speed = MOVE_INCREMENT
 
-    def cars(self):
+    def create_car(self):
         random_choice = random.randint(1, 6)
         if random_choice is 1:
             car = Turtle()
@@ -24,4 +25,10 @@ class CarManager:
 
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
+
+    def level_up(self):
+        for car in self.all_cars:
+            new_speed = self.car_speed + MOVE_INCREMENT
+            car.backward(new_speed)
+
