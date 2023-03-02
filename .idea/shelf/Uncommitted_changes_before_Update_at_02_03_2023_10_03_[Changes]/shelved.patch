@@ -1,0 +1,138 @@
+Index: Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/playground.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/playground.py b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/playground.py
+new file mode 100644
+--- /dev/null	(date 1677683194947)
++++ b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/playground.py	(date 1677683194947)
+@@ -0,0 +1,22 @@
++def add(*args):
++    print(args[0])
++    t = 0
++    for n in args:
++        t += n
++    return t
++
++
++print(add(3, 5, 6))
++
++
++def calculate(n, **kwargs):
++    print(kwargs)
++    # for key, value in kwargs.items():
++    #     print(key)
++    #     print(value)
++    n += kwargs["add"]
++    n *= kwargs["multiply"]
++    print(n)
++
++
++calculate(2, add=3, multiply=5)
+Index: Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/Creating_Windows_and_Labels_with_Tkinter.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/Creating_Windows_and_Labels_with_Tkinter.py b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/Creating_Windows_and_Labels_with_Tkinter.py
+new file mode 100644
+--- /dev/null	(date 1677652051159)
++++ b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/Creating_Windows_and_Labels_with_Tkinter.py	(date 1677652051159)
+@@ -0,0 +1,21 @@
++import tkinter
++
++window =tkinter.Tk()
++
++window.title("My first GUI Program")
++window.minsize(width=500, height=300)
++
++#Label
++
++my_label = tkinter.Label(text="I am a Label", font =("Arial", 24, "bold"))
++my_label.pack(side="left")
++
++
++
++
++
++
++
++
++
++window.mainloop()
+\ No newline at end of file
+Index: Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/passwords.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/passwords.json b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/passwords.json
+new file mode 100644
+--- /dev/null	(date 1677687147569)
++++ b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/passwords.json	(date 1677687147569)
+@@ -0,0 +1,1 @@
++{"password": "0H0e?eyTGbN*,g=Z\\C>-Q%n75w`Zk]Ge?&cT0):$K]V+e34DeW^o60xJ6YDMl\"!_5.1J?6Cs.@3t2qx_HrADJ!,*Le#%)${vSeK!^\"x1Vs9b0KDAtH\"fSfF9_l."}
+\ No newline at end of file
+Index: Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/gsgsdfg.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/gsgsdfg.py b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/gsgsdfg.py
+new file mode 100644
+--- /dev/null	(date 1677687109972)
++++ b/Day_27_Tkinter_args_kwargs_Creating_GUI_Programs/gsgsdfg.py	(date 1677687109972)
+@@ -0,0 +1,51 @@
++import random
++import string
++import json
++import tkinter as tk
++
++
++def generate_password(length):
++    """
++    Генерирует случайный пароль указанной длины.
++    """
++    # Создаем строку из всех возможных символов, которые могут использоваться в пароле
++    characters = string.ascii_letters + string.digits + string.punctuation
++
++    # Генерируем случайный пароль из заданной длины
++    password = ''.join(random.choice(characters) for i in range(length))
++
++    return password
++
++
++def save_password():
++    # Запрашиваем у пользователя длину пароля, который он хочет получить
++    password_length = int(entry_length.get())
++
++    # Генерируем пароль и сохраняем его в JSON-файле
++    password = generate_password(password_length)
++    with open('passwords.json', 'w') as f:
++        json.dump({'password': password}, f)
++
++    # Выводим сообщение об успешной генерации пароля
++    label_message.config(text="Пароль успешно сгенерирован и сохранен в файле passwords.json.")
++
++
++# Создаем окно приложения
++window = tk.Tk()
++window.title("Генератор паролей")
++
++# Создаем элементы пользовательского интерфейса
++label_title = tk.Label(window, text="Введите длину пароля:")
++label_title.pack()
++
++entry_length = tk.Entry(window)
++entry_length.pack()
++
++button_generate = tk.Button(window, text="Сгенерировать пароль", command=save_password)
++button_generate.pack()
++
++label_message = tk.Label(window, text="")
++label_message.pack()
++
++# Запускаем главный цикл приложения
++window.mainloop()
+\ No newline at end of file
