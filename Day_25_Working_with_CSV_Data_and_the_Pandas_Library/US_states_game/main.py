@@ -28,11 +28,7 @@ while len(guessed_list) < 50:
     answer_state = screen.textinput(title=f"Guess the State {len(guessed_list)}/"
                                           f"50", prompt="What's another state's name?").capitalize()
     if answer_state == "Exit":
-        missing_state = []
-        for state in data_states_name:
-            if state not in guessed_list:
-                missing_state.append(state)
-        print(missing_state)
+        missing_state = [state for state in data_states_name if state not in guessed_list]
         data = pandas.DataFrame(save_states)
         data.to_csv("Save_data_of_States_game.csv")
         break
