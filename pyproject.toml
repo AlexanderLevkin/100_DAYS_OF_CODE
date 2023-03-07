@@ -9,6 +9,7 @@ packages = [{include = "100_days_of_code"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 pandas = "^1.5.3"
+pyperclip = "^1.8.2"
 
 
 [build-system]
