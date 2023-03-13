@@ -3,7 +3,7 @@ import random
 
 my_email = "arterial888@gmail.com"
 recipient_email = "alexanderlevkin@yahoo.com"
-password = "odqvzefbnzuoocaa"
+password = ""
 #
 # with smtplib.SMTP("smtp.gmail.com") as connection:
 #     connection.starttls()
